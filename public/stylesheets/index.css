@@ -1,0 +1,44 @@
+body {
+  background: #3e3e3e;
+  color: #fff;
+}
+
+#main {
+  height: 400px;
+}
+
+.domain,
+.tick path,
+.tick line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+.timePickerOuter {
+  border: solid 1px orange;
+  height: 50px;
+  display: none;
+}
+
+.timePickerOuter g rect {
+  fill: rgba(0, 0, 0, 0.2);
+  stroke: deepskyblue;
+  stroke-width: 2;
+  height: 100%;
+}
+
+.datepicker {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.datepicker input {
+  background: transparent;
+}
+
+.datepicker * {
+  margin: 0 10px;
+}
