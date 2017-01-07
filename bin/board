@@ -2,6 +2,37 @@
 
 'use strict';
 
+const _ = require('xutil');
+const ipv4 = require('ipv4');
+const child_process = require('child_process');
+
+const pkg = require('../package');
+
+const linuxShell = _.platform.isLinux ? 'xdg-open' : 'open';
+const openShell = _.platform.isWindows ? 'start' : linuxShell;
+
+const args = process.argv.slice(2);
+const arg_0 = args[0];
+
+if (!!~['-v', '--version'].indexOf(arg_0)) {
+  console.log(`\n  ${pkg.version}\n`);
+  process.exit(0);
+}
+
 const server = require('../lib/server');
 
-server();
+server({
+  callback: (port, start_date, end_date) => {
+    console.log(`${pkg.name} started`);
+    var url = encodeURI(`http://${ipv4}:${port}/?start=${start_date}&end=${end_date}`);
+    if (_.platform.isWindows) {
+      url = url.replace(/&/g, '^&');
+    } else {
+      url = `'${url}'`;
+    }
+
+    if (process.env.NODE_ENV !== 'dev') {
+      child_process.exec(`${openShell} ${url}`);
+    }
+  }
+});

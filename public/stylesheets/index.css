@@ -4,7 +4,7 @@ body {
 }
 
 #main {
-  height: 400px;
+  height: 300px;
 }
 
 .domain,
@@ -31,7 +31,7 @@ body {
 
 .datepicker {
   text-align: center;
-  margin: 10px 0;
+  margin-top: 10px;
   font-size: 14px;
 }
 

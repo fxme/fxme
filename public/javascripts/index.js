@@ -47,17 +47,16 @@
       textStyle: {
         color: '#fff'
       },
-      title: {
-        text: ''
-      },
       tooltip: {
         trigger: 'axis'
       },
       legend: {
         data: currencyPairs,
         orient: 'horizontal',
-        padding: [30, 0, 0, 0],
-        inactiveColor: 'grey',
+        left: '150',
+        right: '150',
+        top: '20',
+        padding: [0, 0, 0, 0],
         selected: getSelected(['USD/CNY']),
       },
       toolbox: {
@@ -69,10 +68,8 @@
         }
       },
       grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
-        top: '30%',
+        bottom: '0',
+        top: '100',
         containLabel: true
       },
       xAxis: [{
@@ -96,13 +93,13 @@
         start: 0,
         end: 100,
         handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
-        handleSize: '80%',
+        handleSize: '60%',
         handleStyle: {
           color: '#FA8072',
-          shadowBlur: 3,
+          shadowBlur: 1,
           shadowColor: 'rgba(0, 0, 0, 0.6)',
-          shadowOffsetX: 2,
-          shadowOffsetY: 2
+          shadowOffsetX: 1,
+          shadowOffsetY: 1
         }
       }],
       series: series
@@ -121,6 +118,20 @@
     success: function(res) {
       if (res.success) {
         render(res.data);
+      }
+    }
+  });
+
+  $.ajax({
+    url: '/api/dayfx?type=aux',
+    data: {
+      start: getQueryParameters().start,
+      end: getQueryParameters().end
+    },
+    method: 'get',
+    success: function(res) {
+      if (res.success) {
+        console.log(res.data);
       }
     }
   });

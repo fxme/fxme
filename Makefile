@@ -21,4 +21,6 @@ travis: install
 		--bail
 jshint:
 	@${npm_bin}/jshint .
+dev:
+	NODE_ENV=dev ${npm_bin}/nodemon ./bin/board
 .PHONY: test

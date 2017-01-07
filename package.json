@@ -1,6 +1,6 @@
 {
   "name": "fxme",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "board",
   "keywords": [
     "board"
@@ -22,11 +22,12 @@
   },
   "devDependencies": {
     "co-mocha": "*",
-    "mocha": "*",
-    "should": "*",
-    "jshint": "*",
     "istanbul": "*",
-    "pre-commit": "1.1.1"
+    "jshint": "*",
+    "mocha": "*",
+    "nodemon": "^1.11.0",
+    "pre-commit": "1.1.1",
+    "should": "*"
   },
   "scripts": {
     "test": "make test",
